@@ -33,6 +33,10 @@ class Ship():
         # refine rect by self.center
         self.rect.centerx = self.center
 
+    def center_ship(self):
+        """ put the ship in the middle of the screen """
+        self.center = self.screen_rect.centerx
+
     def blitme(self):
         """ draw ships at the pro-descript position """
         self.screen.blit(self.image, self.rect)
