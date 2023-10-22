@@ -22,6 +22,11 @@ class Alien(Sprite):
         # save aliens correct position
         self.x = float(self.rect.x)
 
+    def update(self):
+        """ move aliens to right """
+        self.x += self.ai_settings.alien_speed_factor
+        self.rect.x = self.x
+
     def blitme(self):
         """ draw aliens in allocated position """
         self.screen.blit(self.image, self.rect)

@@ -2,7 +2,6 @@ import sys
 
 import pygame
 
-from alien import Alien
 from settings import Settings
 from ship import Ship
 import game_functions as gf
@@ -22,7 +21,8 @@ def run_game():
     # new a bullet
     bullets = Group()
     # new an alien
-    alien = Alien(ai_settings, screen)
+    aliens = Group()
+    gf.create_fleet(ai_settings, screen, ship, aliens)
 
     # 开始游戏的主循环
     while True:
@@ -33,13 +33,14 @@ def run_game():
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
         gf.update_bullets(bullets)
+        gf.update_aliens(aliens)
         # print(len(bullets)) test the remove work
 
         # # reform screen every times
         # screen.fill(ai_settings.bg_color)
         # ship.blitme()
         # change to use game_function
-        gf.update_screen(ai_settings, screen, ship, alien, bullets)
+        gf.update_screen(ai_settings, screen, ship, aliens, bullets)
 
         # 让最近绘制的屏幕可见
         pygame.display.flip()
